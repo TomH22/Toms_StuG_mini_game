@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://dk4a33ixlouf6"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_ah2go"]
+[ext_resource type="Script" path="res://scenes/Tank.gd" id="1_mfsyp"]
+[ext_resource type="Texture2D" uid="uid://b7khpqhdu7vw7" path="res://graphics/strategyunits2-small.png" id="1_oiypv"]
+[ext_resource type="Script" path="res://scenes/Fire.gd" id="4_rljpr"]
+[ext_resource type="PackedScene" uid="uid://dci83chts24f2" path="res://scenes/enemy.tscn" id="6_q8tu8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb6dr"]
+bg_color = Color(1, 0.11, 0.11, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rw2x"]
+bg_color = Color(1, 0.219608, 0.219608, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o03i"]
+size = Vector2(64, 34)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ah2go")
+
+[node name="TankSpeed" type="Label" parent="."]
+offset_right = 151.0
+offset_bottom = 23.0
+
+[node name="Fire" type="Button" parent="."]
+offset_left = 485.0
+offset_top = 982.0
+offset_right = 622.0
+offset_bottom = 1130.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hb6dr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0rw2x")
+action_mode = 0
+text = "Fire"
+script = ExtResource("4_rljpr")
+
+[node name="Enemy1" parent="." instance=ExtResource("6_q8tu8")]
+position = Vector2(185, 574)
+
+[node name="Enemy2" parent="." instance=ExtResource("6_q8tu8")]
+position = Vector2(243, 548)
+
+[node name="Enemy3" parent="." instance=ExtResource("6_q8tu8")]
+position = Vector2(319, 523)
+
+[node name="Tank" type="CharacterBody2D" parent="."]
+position = Vector2(147, 1049)
+rotation = -1.54287
+script = ExtResource("1_mfsyp")
+
+[node name="Model" type="Sprite2D" parent="Tank"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_oiypv")
+region_enabled = true
+region_rect = Rect2(17.5866, 118.044, 159.522, 85.3106)
+
+[node name="Turret" type="Sprite2D" parent="Tank/Model"]
+position = Vector2(35, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_oiypv")
+region_enabled = true
+region_rect = Rect2(207.458, 49.7307, 116.347, 52.9712)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank"]
+shape = SubResource("RectangleShape2D_2o03i")
+
+[connection signal="button_down" from="Fire" to="Tank" method="_on_fire_button_down"]
+[connection signal="button_up" from="Fire" to="Tank" method="_on_fire_button_up"]
+[connection signal="pressed" from="Fire" to="Tank" method="_on_fire_pressed"]
