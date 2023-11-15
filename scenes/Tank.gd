@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-#@onready var explosion_scene = preload("res://scenes/explosion.tscn")
+var explosion_scene = preload("res://scenes/explosion.tscn")
 
 const SPEED = 60.0
 const ROT_SPEED = 3
@@ -14,7 +14,6 @@ var tank_track_velocity = 0.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-#@onready var explosion = $Explosion/Animation
 var block_process = false
 
 @onready var e1= $"../Enemy1"
@@ -75,12 +74,18 @@ func _process(delta):
 
 
 func _on_fire_pressed():
-	#var explosion = explosion_scene.instance()
-	#ex2.visible = true
-	#ex2.play("default")
-	pass
+	print("tank._on_fire_pressed")
+	var new_explosion = explosion_scene.instantiate()
+	#new_explosion.rotation = rotation
+	var tankPos = position
+	var tankDir = Vector2(1, 0).from_angle(rotation)
+	var dist = 400
+	new_explosion.position = tankPos + tankDir * dist
+	$"..".add_child(new_explosion)
 
+'''
 func _on_fire_button_down():
+	print("tank._on_fire_button_down")
 	if is_instance_valid(e1) and e1.entered:
 		free_enemy(e1)
 	if is_instance_valid(e2) and e2.entered:
@@ -88,20 +93,6 @@ func _on_fire_button_down():
 	if is_instance_valid(e3) and e3.entered:
 		free_enemy(e3)				
 	block_process = true
-
-
+'''
 func _on_fire_button_up():
 	block_process = false
-
-
-func _on_explosion_body_entered(body):
-	body.entered = 1
-	#var trans = Vector2(10.0,10.0)
-	#body.queue_free()
-
-
-func _on_explosion_body_exited(body):
-	body.entered = 0
-
-func free_enemy(enemy):
-	enemy.queue_free()

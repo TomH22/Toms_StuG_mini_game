@@ -121,7 +121,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 30.0
+"speed": 20.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m4agy"]
@@ -131,14 +131,11 @@ radius = 25.7098
 script = ExtResource("1_1xqeh")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(366.969, -6.24876)
 sprite_frames = SubResource("SpriteFrames_e36x3")
-frame = 10
-frame_progress = 0.131592
 script = ExtResource("3_iubg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(362.914, -8.13672)
 shape = SubResource("CircleShape2D_m4agy")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Animation" to="Animation" method="_on_animation_finished"]

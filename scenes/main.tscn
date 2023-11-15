@@ -44,8 +44,8 @@ position = Vector2(243, 548)
 position = Vector2(319, 523)
 
 [node name="Tank" type="CharacterBody2D" parent="."]
-position = Vector2(147, 1049)
-rotation = -1.54287
+position = Vector2(134, 978)
+rotation = -1.25664
 script = ExtResource("1_mfsyp")
 
 [node name="Model" type="Sprite2D" parent="Tank"]
