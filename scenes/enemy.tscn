@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dci83chts24f2"]
+[gd_scene load_steps=7 format=3 uid="uid://dci83chts24f2"]
 
 [ext_resource type="Texture2D" uid="uid://chmmn53ei7had" path="res://graphics/enemy2.png" id="1_7q8u2"]
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_d3sxl"]
+[ext_resource type="Script" path="res://scenes/RocketTimer.gd" id="3_sxfui"]
+[ext_resource type="PackedScene" uid="uid://6cb8qf3tjsvp" path="res://scenes/exclamation.tscn" id="4_yh07l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5yf7"]
-size = Vector2(31, 110)
+size = Vector2(127, 92)
 
-[node name="Enemy" type="RigidBody2D"]
-position = Vector2(67, 336)
+[sub_resource type="CircleShape2D" id="CircleShape2D_lv3dg"]
+radius = 323.002
+
+[node name="BaseEnemy" type="RigidBody2D"]
 gravity_scale = 0.0
 contact_monitor = true
 script = ExtResource("1_d3sxl")
@@ -16,7 +20,24 @@ script = ExtResource("1_d3sxl")
 position = Vector2(1.5, 8)
 shape = SubResource("RectangleShape2D_s5yf7")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7q8u2")
+
+[node name="RocketTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+script = ExtResource("3_sxfui")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_lv3dg")
+debug_color = Color(0.905882, 0.752941, 0.996078, 0.137255)
+
+[node name="Node2D_Exclamation" parent="." instance=ExtResource("4_yh07l")]
+visible = false
+position = Vector2(-17, -87)
+
+[connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

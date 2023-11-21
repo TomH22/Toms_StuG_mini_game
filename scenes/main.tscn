@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk4a33ixlouf6"]
+[gd_scene load_steps=10 format=3 uid="uid://dk4a33ixlouf6"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_ah2go"]
 [ext_resource type="Script" path="res://scenes/Tank.gd" id="1_mfsyp"]
 [ext_resource type="Texture2D" uid="uid://b7khpqhdu7vw7" path="res://graphics/strategyunits2-small.png" id="1_oiypv"]
 [ext_resource type="Script" path="res://scenes/Fire.gd" id="4_rljpr"]
-[ext_resource type="PackedScene" uid="uid://dci83chts24f2" path="res://scenes/enemy.tscn" id="6_q8tu8"]
+[ext_resource type="PackedScene" uid="uid://usorjf4qmfko" path="res://scenes/T-64BV_.tscn" id="6_64kk5"]
+[ext_resource type="PackedScene" uid="uid://cuw1klup8imtu" path="res://scenes/rocket.tscn" id="7_0ck11"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb6dr"]
 bg_color = Color(1, 0.11, 0.11, 1)
@@ -34,18 +35,9 @@ action_mode = 0
 text = "Fire"
 script = ExtResource("4_rljpr")
 
-[node name="Enemy1" parent="." instance=ExtResource("6_q8tu8")]
-position = Vector2(185, 574)
-
-[node name="Enemy2" parent="." instance=ExtResource("6_q8tu8")]
-position = Vector2(243, 548)
-
-[node name="Enemy3" parent="." instance=ExtResource("6_q8tu8")]
-position = Vector2(319, 523)
-
 [node name="Tank" type="CharacterBody2D" parent="."]
-position = Vector2(134, 978)
-rotation = -1.25664
+position = Vector2(526, 446)
+rotation = -1.54287
 script = ExtResource("1_mfsyp")
 
 [node name="Model" type="Sprite2D" parent="Tank"]
@@ -63,6 +55,14 @@ region_rect = Rect2(207.458, 49.7307, 116.347, 52.9712)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tank"]
 shape = SubResource("RectangleShape2D_2o03i")
+
+[node name="T-64BV_" parent="." instance=ExtResource("6_64kk5")]
+position = Vector2(556, 78)
+
+[node name="Rocket" parent="T-64BV_" instance=ExtResource("7_0ck11")]
+position = Vector2(-80, -64)
+rotation = 0.113446
+scale = Vector2(0.5, 0.5)
 
 [connection signal="button_down" from="Fire" to="Tank" method="_on_fire_button_down"]
 [connection signal="button_up" from="Fire" to="Tank" method="_on_fire_button_up"]

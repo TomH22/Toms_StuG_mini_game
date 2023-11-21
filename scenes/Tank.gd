@@ -16,10 +16,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var block_process = false
 
-@onready var e1= $"../Enemy1"
-@onready var e2= $"../Enemy2"
-@onready var e3= $"../Enemy3"
-
 
 func _physics_process(_delta):
 	pass
@@ -78,21 +74,14 @@ func _on_fire_pressed():
 	var new_explosion = explosion_scene.instantiate()
 	#new_explosion.rotation = rotation
 	var tankPos = position
-	var tankDir = Vector2(1, 0).from_angle(rotation)
+	var tankDir = Vector2.from_angle(rotation)
 	var dist = 400
 	new_explosion.position = tankPos + tankDir * dist
 	$"..".add_child(new_explosion)
 
-'''
+
 func _on_fire_button_down():
-	print("tank._on_fire_button_down")
-	if is_instance_valid(e1) and e1.entered:
-		free_enemy(e1)
-	if is_instance_valid(e2) and e2.entered:
-		free_enemy(e2)
-	if is_instance_valid(e3) and e3.entered:
-		free_enemy(e3)				
 	block_process = true
-'''
+
 func _on_fire_button_up():
 	block_process = false

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://lhbwb23wn8h0"]
+
+[ext_resource type="Texture2D" uid="uid://duhre543viee3" path="res://graphics/t-64bt.png" id="1_6b16y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0p0nf"]
+size = Vector2(164.5, 127)
+
+[node name="T-64BV" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.25, -12.5)
+shape = SubResource("RectangleShape2D_0p0nf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6b16y")
+flip_h = true
