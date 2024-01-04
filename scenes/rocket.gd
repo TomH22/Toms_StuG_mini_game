@@ -2,13 +2,20 @@ extends Area2D
 
 var explosion_scene = preload("res://scenes/explosion.tscn")
 
-@onready var started = 0
-@onready var tank_pos = Vector2(0, 0)
-@onready var balistic_easy_simulation = 0.0
-@onready var bes_v = Vector2(-3,-1)
+@onready var started : int
+@onready var tank_pos : Vector2
+@onready var balistic_easy_simulation : float
+@onready var bes_v : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	init()
+
+func init():
+	started = 0
+	tank_pos = Vector2(0, 0)
+	balistic_easy_simulation = 0.0
+	bes_v = Vector2(-3,-1)	
 	pass # Replace with function body.
 
 
@@ -44,4 +51,6 @@ func _process(delta):
 			new_explosion.position = position
 			new_explosion.scale = Vector2(5.0, 5.0)
 			$"..".add_child(new_explosion)
+			$"../../HUD"._on_show_lost_game()
+			$"../../Tank/AudioExplosion".play()
 	pass

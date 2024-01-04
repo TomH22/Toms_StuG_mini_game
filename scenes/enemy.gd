@@ -1,10 +1,19 @@
 extends RigidBody2D
 
-@onready var entered = 0
+@onready var entered : int
+@onready var peacful : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	init()
+	
+func set_peacful():
+	peacful = true	
+
+func init():
+	entered = 0
+	peacful = false
+	$Node2D_Exclamation.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,7 +21,7 @@ func _process(_delta):
 	pass
 
 func _on_rocket_timer_timeout():
-	if $"../T-64BV_/Rocket".started == 0:
+	if $"../T-64BV_/Rocket".started == 0 and not peacful:
 		print("time out")
 		$"../T-64BV_/Rocket".started = 1
 		$Node2D_Exclamation.visible = true
@@ -28,5 +37,5 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_body_exited(body):
 	if body.name == "Tank":
 		print(name, " lost sight of ", body.name)
-		modulate = Color(1, 1, 1)
+		$Sprite2D.modulate = Color(1, 1, 1)
 		$RocketTimer.stop()

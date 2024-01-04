@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsprl41egjg0h"
+path="res://.godot/imported/Dec_05581 - Kopie.wav-3c900ca538e6e22c2650372dbf4ce448.sample"
+
+[deps]
+
+source_file="res://audio/Dec_05581 - Kopie.wav"
+dest_files=["res://.godot/imported/Dec_05581 - Kopie.wav-3c900ca538e6e22c2650372dbf4ce448.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

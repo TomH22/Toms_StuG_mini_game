@@ -8,7 +8,8 @@
 script = ExtResource("2_jbtqd")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(7.5, -4)
+position = Vector2(-6.5, -10.5)
+debug_color = Color(0.635294, 0.521569, 0.188235, 0.419608)
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.8, 0.8)

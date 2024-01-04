@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbn4sv5mfqdip"]
+
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_gg31v"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_gg31v")
+
+[node name="Message" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.484
+anchor_top = 0.343
+anchor_right = 0.484
+anchor_bottom = 0.343
+offset_left = -234.632
+offset_top = -0.136017
+offset_right = 234.368
+offset_bottom = 109.864
+theme_override_font_sizes/font_size = 44
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.5
+anchor_right = 0.51
+anchor_bottom = 0.5
+offset_left = -156.48
+offset_right = 156.52
+offset_bottom = 114.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://6cb8qf3tjsvp" path="res://scenes/exclamation.tscn" id="4_yh07l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5yf7"]
-size = Vector2(127, 92)
+size = Vector2(115, 103)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lv3dg"]
 radius = 323.002
 
-[node name="BaseEnemy" type="RigidBody2D"]
+[node name="BaseEnemy" type="RigidBody2D" groups=["enemies"]]
 gravity_scale = 0.0
 contact_monitor = true
 script = ExtResource("1_d3sxl")
