@@ -3,7 +3,7 @@
 - developed on Windows 10
 - developed for Android/iOS
 
-# Tanks
+# Thanks
 - [Mauriku](https://opengameart.org/users/mauriku) for the tank image
 - [Cuzco](https://opengameart.org/users/cuzco) for the explosion image
 - [Parriah](https://opengameart.org/users/parriah) for the exclamation mark image
