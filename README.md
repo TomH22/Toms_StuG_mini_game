@@ -10,4 +10,5 @@
 - [DerMeehdrescher](https://opengameart.org/users/dermeehdrescher) for the generic V8 engine sound
 - [Kutejnikov](https://opengameart.org/users/kutejnikov) for the explosion sound
 
-![]([https://myoctocat.com/assets/images/base-octocat.svg](https://i.imgur.com/cMHIgXR.jpg)https://i.imgur.com/cMHIgXR.jpg)
+#
+![](https://i.imgur.com/BOOYpaj.jpg)
